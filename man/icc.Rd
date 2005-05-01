@@ -59,9 +59,11 @@
 \examples{
   data(rats)
   icc(n, y, rats[rats$group == "CTRL", ])
-  res <- icc(n, y, rats[rats$group == "TREAT", ], R = 5000)
-  res
-  hist(res@rho.MC)
+  \dontrun{
+    res <- icc(n, y, rats[rats$group == "TREAT", ], R = 5000)
+    res
+    hist(res@rho.MC)
+    }
   by(rats,
      list(group = rats$group),
      function(x) icc(n, y, data = x))

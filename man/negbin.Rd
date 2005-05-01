@@ -79,8 +79,9 @@
   data(dja)
   negbin(y ~ group + offset(log(trisk)), ~ group, dja)
   # phi fixed to zero in group TREAT
-  negbin(y ~ group + offset(log(trisk)), ~ group, dja,
+  \dontrun{negbin(y ~ group + offset(log(trisk)), ~ group, dja,
     fixpar = list(4, 0))
+    }
   # glim without overdispersion
   summary(glm(y ~ group + offset(log(trisk)),
     family = poisson, data = dja))

@@ -1,4 +1,7 @@
 splitbin <- function(formula, data, id = "id"){
+# convert any variable of mode character into a factor
+  data <- as.data.frame(lapply(data, function(x) if(mode(x) == "character") factor(x) else x))
+
 # check formula
   if(length(formula) != 3)                                                            
     stop(paste(deparse(formula), collapse = " "), "is not a valid formula.")                          
@@ -6,6 +9,7 @@ splitbin <- function(formula, data, id = "id"){
     if(substring(deparse(formula)[1], 1, 5) != "cbind")                          
       stop(paste(deparse(formula), collapse = ""), " is not a valid formula.\n",               
            "The response must be a matrix of the form cbind(success, failure)")
+
 # check data w.r.t. formula
   f <- all.vars(formula)
   v <- is.element(f, names(data))
@@ -13,12 +17,14 @@ splitbin <- function(formula, data, id = "id"){
     err <- paste(f[!v], collapse = ", ")
     stop("Variable(s) ", dQuote(err), " in formula were not found in ", dQuote(deparse(substitute(data))))
     }
+
 # build the data set
   dfr <- model.frame(formula = formula, data = data)
   rownam <- rownames(data)
   resp <- model.response(dfr)
   n <- rowSums(resp)
   y <- resp[ , 1]
+
 # check the response
   if(any(n == 0)){
     err <- rownam[n == 0]
@@ -46,4 +52,3 @@ splitbin <- function(formula, data, id = "id"){
   rownames(res) <- seq(nrow(res))
   res
   }
-

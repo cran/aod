@@ -15,6 +15,7 @@
   \item{id}{An optional character string naming the identifier (= grouping factor). Default to \dQuote{id}.}
   }
 \details{
+  Any variable of mode character is converted into a factor before data processing.\cr
   Each line (with \eqn{n > 0}) of the initial data set generates \eqn{n} lines in the final data set with the same 
   covariate pattern, plus an identifier (named \dQuote{id}, by default). The value of this identifier is the row 
   name from which it was expanded in the initial data set.
