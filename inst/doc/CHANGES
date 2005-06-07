@@ -1,0 +1,54 @@
+      =======================================================
+      CHANGES IN aod VERSION 1.1-1 (released on 7th June 2005)
+      =======================================================
+
+
+NEW FEATURES
+
+    o Revision of code and help in the the S4 framework.
+
+    o Add packages "methods" and "stats" in the "Depends" field of the file 
+		DESCRIPTION (thanks to comments from Kurt Hornik).
+
+    o "logLik" and "AIC" methods for objects of formal class "glimML".
+
+    o New "summary" method for objects of class "glimML".
+
+    o New formal class "summary.glimML" to represent the summary of objects of
+		formal class "glimML".
+
+
+BUGS
+
+    o Fixed a lot of missing links and undocumented classes and objects, thanks
+		to comments by Kurt Hornik.
+
+
+      =======================================================
+      CHANGES IN aod VERSION 1.0-2 (released on 5th June 2005)
+      =======================================================
+
+
+NEW FEATURES
+
+    o S4 generic functions are now explicitely defined.
+
+
+BUGS
+
+    o In anova.glimML(), arguments digits now works.
+
+
+DOCUMENTATION
+
+    o	Help pages for classes icc and varbin.
+
+
+      =======================================================
+      CHANGES IN aod VERSION 1.0-1 (released on 4th June 2005)
+      =======================================================
+
+
+DOCUMENTATION
+
+    o	Minor changes in documentation.
