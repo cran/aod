@@ -21,7 +21,7 @@
   The marginal mean and variance are:
   \deqn{E[y] = \mu}
   \deqn{Var[y] = \mu + \phi * \mu^2}
-  The function uses the function \code{glm} and the recrystallization: \eqn{\mu = exp(X b) = exp(\eta)}, where \eqn{X} 
+  The function uses the function \code{glm} and the parameterization: \eqn{\mu = exp(X b) = exp(\eta)}, where \eqn{X} 
   is a design-matrix, \eqn{b} is a vector of fixed effects and \eqn{\eta = X b} is the linear predictor. \cr
   The estimate of \eqn{b} maximizes the quasi log-likelihood of the marginal model.
   The parameter \eqn{\phi} is estimated with the moment method or can be set to a constant

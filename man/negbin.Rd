@@ -38,7 +38,7 @@
   The marginal negative-binomial distribution is:
   \deqn{P(y) = G(y + \theta) * \left(\frac{1}{1 + r}\right)^\theta * \frac{(\frac{r}{1 + r})^y}{y! * G(\theta)} }{%
     P(y) = G(y + \theta) * (1 / (1 + r))^\theta * (r / (1 + r))^y / (y! * G(\theta)) }
-  The function uses the recrystallization \eqn{\mu = \theta * r = exp(X b) = exp(\eta)} and \eqn{\phi = 1 / \theta}, 
+  The function uses the parameterization \eqn{\mu = \theta * r = exp(X b) = exp(\eta)} and \eqn{\phi = 1 / \theta}, 
   where \eqn{X} is a design-matrix, \eqn{b} is a vector of fixed effects, \eqn{\eta = X b} is the linear predictor and 
   \eqn{\phi} the overdispersion parameter.\cr
   The marginal mean and variance are:
@@ -54,8 +54,8 @@
   }
   
 \references{
-  Lindsey, J.K., 1999, 2nd ed. \emph{Models for Repeated Measurements}. Oxford, London.\cr
-  Venables, W.N., Ripley, B.D., 2002, 4th ed. \emph{Modern applied statistics with S}. Springer-Verlag, New York.
+  Lawless, J.F., 1987. \emph{Negative binomial and mixed Poisson regression}.
+  The Canadian Journal of Statistics, 15(3): 209-225.
   }
   
 \author{Matthieu Lesnoff \email{matthieu.lesnoff@cirad.fr}, Renaud Lancelot \email{renaud.lancelot@cirad.fr}

@@ -24,7 +24,7 @@
   \deqn{Var[y] = p * (1 - p) * [1 + (n - 1) * \phi]}
   The overdispersion parameter \eqn{\phi} corresponds to the intra-cluster correlation coefficient,
   which is here restricted to be positive.\cr
-  The function uses the function \code{glm} and the recrystallization: \eqn{p = h(X b) = h(\eta)}, where \eqn{h} is the
+  The function uses the function \code{glm} and the parameterization: \eqn{p = h(X b) = h(\eta)}, where \eqn{h} is the
   inverse of a given link function, \eqn{X} is a design-matrix, \eqn{b} is a vector of fixed effects and \eqn{\eta = X b}
   is the linear predictor. \cr
   The estimate of \eqn{b} maximizes the quasi log-likelihood of the marginal model.

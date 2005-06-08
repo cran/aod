@@ -43,7 +43,7 @@
   The marginal beta-binomial distribution is:
   \deqn{P(y) = \frac{C(n,~y) * B(a1 + y, a2 + n - y)}{B(a1,~a2)}}{%
     P(y) = C(n, y) * B(a1 + y, a2 + n - y) / B(a1, a2)}
-  The function uses the recrystallization \eqn{p = \frac{a1}{a1 + a2} = h(X b) = h(\eta)}{%
+  The function uses the parameterization \eqn{p = \frac{a1}{a1 + a2} = h(X b) = h(\eta)}{%
     p = a1 / (a1 + a2) = h(X b) = h(\eta)} and \eqn{\phi = \frac{1}{a1 + a2 + 1}}{\phi = 1 / (a1 + a2 + 1)}, 
   where \eqn{h} is the inverse of the link function (logit or complementary log-log), \eqn{X} is a design-matrix, \eqn{b} 
   is a vector of fixed effects, \eqn{\eta = X b} is the linear predictor and \eqn{\phi} is the overdispersion
