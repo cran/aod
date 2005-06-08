@@ -9,8 +9,8 @@
 \description{Extracts the deviance fitted models.}
 
 \section{Methods}{\describe{
-  \item{object = "ANY"}{Generic function: see \code{\link[stats]{deviance}}.}
-  \item{object = "glimML"}{Extracts the deviance from models fitted by \code{betabin} or \code{negbin}.}
+  \item{ANY}{Generic function: see \code{\link[stats]{deviance}}.}
+  \item{glimML}{Extracts the deviance from models fitted by \code{betabin} or \code{negbin}.}
   }}
 
 \keyword{methods}

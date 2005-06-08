@@ -9,8 +9,8 @@
 \description{Computes the number of degrees of freedom of the residuals from fitted objects.}
 
 \section{Methods}{\describe{
-  \item{object = "ANY"}{Generic function: see \code{\link[stats]{df.residual}}.}
-  \item{object = "glimML"}{Computes the df of residuals for models fitted by \code{betabin} or \code{negbin}.}
+  \item{ANY}{Generic function: see \code{\link[stats]{df.residual}}.}
+  \item{glimML}{Computes the df of residuals for models fitted by \code{betabin} or \code{negbin}.}
   }}
 
 \keyword{methods}

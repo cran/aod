@@ -13,15 +13,13 @@
 \description{Extract the approximate var-cov matrix of estimated coefficients from fitted models.}
 
 \section{Methods}{\describe{
-  \item{object = "ANY"}{Generic function: see \code{\link[stats]{vcov}}.}
-  \item{object = "glimML"}{Extract the var-cov matrix of estimated coefficients for fitted 
-                           models of formal class \dQuote{glimML}.}
-  \item{object = "glimQL"}{Extract the var-cov matrix of estimated coefficients for fitted 
-                           models of formal class \dQuote{glimQL}.}
-  \item{object = "geese"}{Extract the var-cov matrix of estimated coefficients for fitted 
-                          models of class \dQuote{geese} (contributed package \pkg{geepack}).}
-  \item{object = "geeglm"}{Extract the var-cov matrix of estimated coefficients for fitted 
-                           objects of class \dQuote{geeglm} (contributed package \pkg{geepack}).}
+  \item{ANY}{Generic function: see \code{\link[stats]{vcov}}.}
+  \item{glimML}{Extract the var-cov matrix of estimated coefficients for fitted models of formal class \dQuote{glimML}.}
+  \item{glimQL}{Extract the var-cov matrix of estimated coefficients for fitted models of formal class \dQuote{glimQL}.}
+  \item{geese}{Extract the var-cov matrix of estimated coefficients for fitted models of class \dQuote{geese} 
+               (contributed package \pkg{geepack}).}
+  \item{geeglm}{Extract the var-cov matrix of estimated coefficients for fitted objects of class \dQuote{geeglm} 
+                (contributed package \pkg{geepack}).}
   }}
 
 \keyword{methods}

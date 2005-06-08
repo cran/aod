@@ -53,19 +53,13 @@
 \references{McCullagh, P., Nelder, J.A., 1989. \emph{Generalized linear models}. London, Chapman & Hall, 511 p.\cr 
   See Appendix C. Likelihood ratio statistics, p. 476-478.}
 
-\seealso{\code{\link{anova.glm}}}
+\seealso{\code{\link{anova.glm}}, \code{\link[aod:AIC]{AIC}}}
 
 \examples{
-  ## proportions
   data(orob2)
   # likelihood ratio test for the effect of root
   fm1 <- betabin(cbind(y, n - y) ~ seed, ~ 1, data = orob2)
   fm2 <- betabin(cbind(y, n - y) ~ seed + root, ~ 1, data = orob2)
-  anova(fm1, fm2)
-  ## counts
-  data(salmonella)
-  fm1 <- negbin(y ~ log(dose + 10), ~ 1, salmonella)
-  fm2 <- negbin(y ~ log(dose + 10) + dose, ~ 1, salmonella)
   anova(fm1, fm2)
   }
 

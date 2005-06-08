@@ -21,8 +21,8 @@
   \item{ANY}{Generic function: see \code{\link[stats]{AIC}}.}
   \item{glimML}{Extract the AIC from models of formal class \dQuote{glimML}, fitted by functions 
     \code{betabin} and \code{negbin}.
-    The AIC is defined as \eqn{-2 \mbox{log-likelihood} + 2*n_{par}}{-2*log-likelihood + 2*npar}, 
-    where \eqn{n_{par}}{npar} represents the number of parameters in the fitted model.}
+    The AIC is defined as \eqn{-2 \mbox{log-likelihood} + 2*n_{par}}{-2*log-likelihood + 2*npar}, were \eqn{n_{par}}{npar} 
+    represents the number of parameters in the fitted model.}
   }}
 
 \seealso{Check the examples in \code{\link{betabin}} and see \code{\link[stats:AIC]{AIC}} in package \pkg{stats}.}

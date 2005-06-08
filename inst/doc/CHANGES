@@ -1,14 +1,29 @@
       =======================================================
+      CHANGES IN aod VERSION 1.1-2 (released on 8th June 2005)
+      =======================================================
+
+
+DOCUMENTATION
+
+    o	Minor revisions of help pages.
+
+
+BUGS
+
+    o A wrong title line was removed in the display of models of class "glimML".
+
+
+      =======================================================
       CHANGES IN aod VERSION 1.1-1 (released on 7th June 2005)
       =======================================================
 
 
 NEW FEATURES
 
-    o Revision of code and help in the the S4 framework.
+    o Revision of code and help in the S4 framework.
 
-    o Add packages "methods" and "stats" in the "Depends" field of the file 
-		DESCRIPTION (thanks to comments from Kurt Hornik).
+    o Add packages "methods" and "stats" in the "Depends" field of the file
+		DESCRIPTION (thanks to Kurt Hornik).
 
     o "logLik" and "AIC" methods for objects of formal class "glimML".
 
@@ -21,7 +36,7 @@ NEW FEATURES
 BUGS
 
     o Fixed a lot of missing links and undocumented classes and objects, thanks
-		to comments by Kurt Hornik.
+		to Kurt Hornik.
 
 
       =======================================================

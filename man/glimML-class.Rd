@@ -5,7 +5,7 @@
 \title{Representation of Models of Formal Class "glimML"}
 \description{Representation of models of formal class "glimML" fitted by maximum-likelihood method.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("glimML", ...)} or, 
-  more commonly, via the \code{betabin} or \code{negbin} functions.}}
+  more commonly, via the functions \code{betabin} or \code{negbin}.}}
 \section{Slots}{
   \describe{
     \item{\code{CALL}}{The call of the function.}

@@ -12,34 +12,32 @@
   }
 \arguments{
   \item{Sigma}{
-    A variance-covariance matrix, usually extracted from one of the fitting functions available in \R 
-    (e.g., \code{lm}, \code{glm}, ...).
+    A var-cov matrix, usually extracted from one of the fitting functions (e.g., \code{lm}, \code{glm}, ...).
     }
   \item{b}{
-    A vector of coefficients with variance-covariance matrix \code{Sigma}. These coefficients 
-    are usually extracted from one of the fitting functions available in \R (e.g., \code{lm}, \code{glm},...).
+    A vector of coefficients with var-cov matrix \code{Sigma}. These coefficients are usually extracted from 
+    one of the fitting functions available in \R (e.g., \code{lm}, \code{glm},...).
     }
   \item{Terms}{
     An optional integer vector specifying which coefficients should be \emph{jointly} tested, using a Wald 
-    \eqn{\chi^2}{chi-squared} or \eqn{F} test. Its elements correspond to the columns or rows of the 
-    variance-covariance matrix given in \code{vc}. Default is \code{NULL}.
+    \eqn{\chi^2}{chi-squared} or \eqn{F} test. Its elements correspond to the columns or rows of the var-cov 
+    matrix given in \code{Sigma}. Default is \code{NULL}.
     }
   \item{L}{
     An optional matrix conformable to \code{b}, such as its product with \code{b} i.e., \code{L \%*\% b} 
     gives the linear combinations of the coefficients to be tested. Default is \code{NULL}.
     }
   \item{H0}{
-    A numeric vector giving the null hypothesis for the test. It must be as long as \code{terms} or 
+    A numeric vector giving the null hypothesis for the test. It must be as long as \code{Terms} or 
     must have the same number of columns as \code{L}. Default to 0 for all the coefficients to be tested.
     }
   \item{df}{
-    An optional numeric scalar giving the number of degrees of freedom to be used in an \eqn{F} test, i.e. the number of 
-    degrees of freedom of the residuals of the model from which \code{b} and \code{Sigma} were fitted. Default to 
-    NULL, for no \eqn{F} test. See the section \bold{Details} for more information.
+    A numeric scalar giving the degrees of freedom to be used in an \eqn{F} test, i.e. the degrees of freedom 
+    of the residuals of the model from which \code{b} and \code{Sigma} were fitted. Default to NULL, for no 
+    \eqn{F} test. See the section \bold{Details} for more information.
     }
   \item{verbose}{
-    A logical scalar controlling the amount of output information. The default value is \code{FALSE}, providing 
-    minimum output; \code{verbose} = \code{TRUE} will result in displaying more details.
+    A logical scalar controlling the amount of output information. The default is \code{FALSE}, providing minimum output.
     }
   \item{x}{
     Object of class \dQuote{wald.test}
@@ -51,28 +49,33 @@
     Additional arguments to \code{print}.
     }
   }
+
 \details{
   The key assumption is that the coefficients asymptotically follow a (multivariate) normal distribution with mean = 
-  model coefficients and variance = their variance - covariance matrix.\cr
+  model coefficients and variance = their var-cov matrix.\cr
   One (and only one) of \code{Terms} or \code{L} must be given. When \code{L} is given, it must have the same number of 
   columns as the length of \code{b}, and the same number of rows as the number of linear combinations of coefficients. 
   When \code{df} is given, the \eqn{\chi^2}{chi-squared} Wald statistic is divided by \code{m} = the number of 
   linear combinations of coefficients to be tested (i.e., \code{length(Terms)} or \code{nrow(L)}). Under the null 
   hypothesis \code{H0}, this new statistic follows an \eqn{F(m, df)} distribution.
   }
+
 \value{
   An object of class \code{wald.test}, printed with \code{print.wald.test}.
   }
+
 \references{
   Diggle, P.J., Liang, K.-Y., Zeger, S.L., 1994. Analysis of longitudinal data. Oxford, Clarendon Press, 253 p.\cr
   Draper, N.R., Smith, H., 1998. Applied Regression Analysis. New York, John Wiley & Sons, Inc., 706 p.
   }
-\seealso{ \code{\link{vcov}} }
-  }
+
+\seealso{ \code{\link{vcov}} } }
+
 \examples{
   data(orob2)
   fm <- quasibin(cbind(y, n - y) ~ seed * root, data = orob2)
-  # Wald test for root effect
+  # Wald test for the effect of root
   wald.test(b = coef(fm), Sigma = vcov(fm), Terms = 3:4)
   }
+
 \keyword{htest}
