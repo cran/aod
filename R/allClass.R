@@ -26,4 +26,4 @@ setClass("summary.glimML",
                         FixedPhi = "data.frame"))
 
 setClass("anova.glimML",
-         representation(models = "character", anova.table = "data.frame", type = "character", digits = "numeric"))
+         representation(models = "character", anova.table = "data.frame", type = "character"))

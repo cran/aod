@@ -13,13 +13,12 @@
   for beta-binomial models (\code{betabin}) or negative-binomial models (\code{negbin}).}
 
 \usage{
-  \S4method{anova}{glimML}(object, \dots, digits = 4)
+  \S4method{anova}{glimML}(object, \dots)
   }
 
 \arguments{
   \item{object}{Fitted model of class \dQuote{glimML}.}
   \item{\dots}{Further models to be tested or arguments passed to the \code{print} function.}
-  \item{digits}{The number of significant digits to be printed in the output.}
   }
 \details{The \code{anova} method for models of formal class \dQuote{glimML} needs at least 2 nested models of the 
   same type (either beta-binomial or negative-binomial models: they cannot be mixed). The quantity of interest is 

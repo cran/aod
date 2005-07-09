@@ -1,11 +1,27 @@
       =======================================================
+      CHANGES IN aod VERSION 1.1-4 (released on 9th July 2005)
+      =======================================================
+
+
+BUGS
+
+    o	The name of the first model was always "object" in the anova method for 
+		objects of formal class glimML.
+
+
+NEW FEATURES
+
+    o	The slot "digits" was removed for objects of formal class anova.glimML.
+
+
+      =======================================================
       CHANGES IN aod VERSION 1.1-3 (released on 1st July 2005)
       =======================================================
 
 
 DOCUMENTATION
 
-    o	Minor revisions of help pages: spelling in different places and reference 
+    o	Minor revisions of help pages: spelling in different places and reference
 		change for fonction negbin.
 
 
