@@ -27,3 +27,7 @@ setClass("summary.glimML",
 
 setClass("anova.glimML",
          representation(models = "character", anova.table = "data.frame", type = "character"))
+
+## for objects of class "aic"
+
+setClass(Class = "aic", representation(istats = "data.frame"))

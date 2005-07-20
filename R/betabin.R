@@ -55,6 +55,15 @@ betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
   if(!is.null(weights) && any(weights < 0))
     stop("Negative wts not allowed")
 
+### change on 12th July 2005 (check lines with weight = 0)
+  n <- rowSums(Y)
+  y <- Y[, 1]
+  
+  if(any(n == 0))
+    warning("The data set contains at least one line with weight = 0.\n")
+
+### end change
+
 # model frame and model matrix for the correlation structure
   mr <- match(c("random", "data", "na.action"), names(mf), 0)
   mr <- mf[c(1, mr)]
@@ -82,9 +91,6 @@ betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
     print(nab <- b[is.na(b)])
     stop("Initial values for the fixed effects contain at least one missing value.")
     }
-
-  n <- rowSums(Y)
-  y <- Y[, 1]
   
 ## Initial values
   nb.b <- ncol(modmatrix.b)

@@ -177,14 +177,25 @@ setMethod("show", signature = "summary.glimML",
       cat("\nOverdispersion coefficients set to fixed values:\n")
       print(FixedPhi)
       }
+    akic <- AIC(Object)@istats; aic <- akic[,2]; aicc <- akic[,3]
 
-    cat("\nLog-likelihood = ", format(round(Object@logL, 3), nsmall = 3), "; ", sep = "")
-    cat("nbpar = ", Object@nbpar, "; ", sep = "")
-    cat("df.residual = ", df.residual(Object), "; ", sep = "")
-    cat("Deviance = ", format(round(deviance(Object), 3), nsmall = 3), "; ", sep = "")
-    cat("AIC = ", format(round(AIC(Object), 3), nsmall = 3), "\n\n", sep = "")
+#    cat("\nLog-lik = ", format(round(Object@logL, 3), nsmall = 3), "; ", sep = "")
+#    cat("nbpar = ", Object@nbpar, "; ", sep = "")
+#    cat("df.residual = ", df.residual(Object), "; ", sep = "")
+#    cat("Deviance = ", format(round(deviance(Object), 3), nsmall = 3), "; ", sep = "")
+#    cat("AIC = ", format(round(aic, 3), nsmall = 3), "; ", sep = "")
+#    cat("AICc = ", format(round(aicc, 3), nsmall = 3), "\n\n", sep = "")
+    ll <- format(round(Object@logL, 3), nsmall = 3)
+    nbpar <- format(Object@nbpar)
+    dfres <- format(df.residual(Object))
+    dev <- format(round(deviance(Object), 3), nsmall = 3)
+    aic <- format(round(akic[,2], 3), nsmall = 3)
+    aicc <- format(round(akic[,3], 3), nsmall = 3)
+    res <- c(ll, nbpar, dfres, dev, aic, aicc)
+    names(res) <- c("Log-lik", "nbpar", "df res.", "Deviance", "AIC", "AICc")
+    cat("\nLog-likelihood statistics\n")
+    print(res, quote = FALSE)
     invisible(object)
-
     })
 
 

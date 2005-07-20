@@ -21,6 +21,11 @@
     \code{betabin} and \code{negbin}.}
   }}
 
+\value{
+  A numeric scalar with 2 attributes: \dQuote(df) (number of parameters in the model) and \dQuote{nobs} 
+  (number of observations = degrees of freedom of the residuals + number of parameters in the model).
+  }
+
 \seealso{\code{\link[stats:logLik]{logLik}} in package \pkg{stats}.}
 
 \keyword{methods}

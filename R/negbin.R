@@ -37,6 +37,13 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
   modmatrix.b <- if(!is.empty.model(mt)) model.matrix(mt, mfb, contrasts) else matrix(, NROW(y), 0)
   offset <- model.offset(mfb)
 
+### change on 12th July 2005 (check lines with weight = 0)
+
+  if(any(is.infinite(offset)))
+    warning("The data set contains at least one line with weight = 0.\n")
+
+### end change
+
 # model frame and model matrix for the correlation structure
   mr <- match(c("random", "data", "na.action"), names(mf), 0)
   mr <- mf[c(1, mr)]

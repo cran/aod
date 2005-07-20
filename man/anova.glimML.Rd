@@ -1,6 +1,6 @@
 \name{anova-methods}
 \docType{methods}
-\alias{anova-methods}
+\alias{anova-method}
 \alias{anova,ANY-method}
 \alias{anova,glimML-method}
 \alias{anova.glimML-class}
@@ -35,6 +35,7 @@
       logL        \tab numeric   \tab maximized log-likelihood\cr
       k           \tab numeric   \tab number of parameters in the model\cr
       AIC         \tab numeric   \tab Akaike information criterion for the model\cr
+      AICc        \tab numeric   \tab Corrected Akaike information criterion for the model\cr
       BIC         \tab numeric   \tab Bayesian information criterion the model\cr
       Resid. dev. \tab numeric   \tab Residual deviance\cr
       Resid. Df   \tab numeric   \tab df of the residuals\cr

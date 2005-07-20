@@ -5,11 +5,14 @@
 \alias{AIC,logLik-method}
 \alias{AIC,glimML-method}
 
-\title{Methods for Function "AIC" in Package "aod"}
+\title{Akaike Information Criteria}
 
-\description{Extracts the Akaike information criterion (AIC) from fitted models of formal class \dQuote{glimML}.}
+\description{Extracts the Akaike information criterion (AIC) and the corrected AIC (AICc) from fitted models of formal 
+  class \dQuote{glimML} and possibly computes derived statistics.}
 
-\usage{\S4method{AIC}{glimML}(object, \dots, k = 2)}
+\usage{
+  \S4method{AIC}{glimML}(object, \dots, k = 2)
+  }
 
 \arguments{
   \item{object}{A fitted model of formal class \dQuote{glimML} (functions \code{betabin} or \code{negbin}).}
@@ -19,17 +22,30 @@
 
 \section{Methods}{\describe{
   \item{ANY}{Generic function: see \code{\link[stats]{AIC}}.}
-  \item{glimML}{Extract the AIC from models of formal class \dQuote{glimML}, fitted by functions 
+  \item{logLik}{Extracts the AIC and AICc from objects of class \dQuote{logLik}.
+  
+    \eqn{AIC = -2~\mbox{log-likelihood} + 2*n_{par}}{-2 * log-likelihood + 2 * npar}, where \eqn{n_{par}}{npar} 
+    represents the number of parameters in the fitted model.
+    
+    \eqn{AICc = AIC + 2 * n_{par} * (n_{par} + 1) / (n_{obs} - n_{par} + 1)}{%
+      AICc = AIC + 2 * npar * (npar + 1) / (nobs - npar + 1)}, where \eqn{n_{obs}}{nobs} is the number of 
+      observations used to compute the log-likelihood.
+      
+    AICc should be used when the number of fitted parameters is large compared to sample size, i.e., when 
+    \eqn{n_{obs} / n_{par} < 40}{nobs / npar < 40} (Hurvich and Tsai, 1995).
+    }
+  \item{glimML}{Extracts the AIC and AICc from models of formal class \dQuote{glimML}, fitted by functions 
     \code{betabin} and \code{negbin}.
-    The AIC is defined as \eqn{-2 \mbox{log-likelihood} + 2*n_{par}}{-2*log-likelihood + 2*npar}, were \eqn{n_{par}}{npar} 
-    represents the number of parameters in the fitted model.}
+    }
   }}
 
-\seealso{Check the examples in \code{\link{betabin}} and see \code{\link[stats:AIC]{AIC}} in package \pkg{stats}.}
+\seealso{Examples in \code{\link{betabin}} and see \code{\link[stats:AIC]{AIC}} in package \pkg{stats}.}
 
 \references{
   Burnham, K.P., Anderson, D.R., 2002. \emph{Model selection and multimodel inference: a practical
-  information-theoretic approach}. New-York, Springer-Verlag, 496 p.
+  information-theoretic approach}. New-York, Springer-Verlag, 496 p.\cr
+  Hurvich, C.M., Tsai, C.-L., 1995. \emph{Model selection for extended quasi-likelihood models in small samples}. 
+  Biometrics, 51 (3): 1077-1084.
   }
 
 \keyword{methods}

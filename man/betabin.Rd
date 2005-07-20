@@ -83,6 +83,7 @@
   fm1; fm2; fm3
   # AIC
   AIC(fm1, fm2, fm3)
+  summary(AIC(fm1, fm2, fm3), which = "AICc")
   # Wald test for root effect
   wald.test(b = coef(fm3), Sigma = vcov(fm3), Terms = 3:4)
   # likelihood ratio test for root effect

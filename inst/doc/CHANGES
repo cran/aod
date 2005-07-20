@@ -1,3 +1,34 @@
+      ========================================================
+      CHANGES IN aod VERSION 1.1-8 (released on 20th July 2005)
+      ========================================================
+
+
+NEW FEATURES
+
+    o	The number of observations was added as an attribute of the number
+		returned by "logLik".
+
+    o	The corrected AIC (AICc) was added to the output of the function "AIC" and
+		included in the comparison statistics of the anova method for objects of
+		formal class "glimML".
+
+    o	A new formal class "aic" was created, with a summary method to compute
+		Akaike difference and Akaike weights from a list of models to be compared.
+
+    o	A control was added in "betabin" and "negbin" to check the presence of
+		lines with null weight (thanks to Jérémy Bouyer).
+
+    o	The show method for objects of formal class "glimML" was slightly altered:
+		AICc was added to the output and a new presentation was adopted for log-
+		likelihood and related statistics.
+
+
+DOCUMENTATION
+
+    o	The documentation of functions "AIC", "anova" and "logLik" was revised to
+		reflect the changes in these functions.
+
+
       =======================================================
       CHANGES IN aod VERSION 1.1-4 (released on 9th July 2005)
       =======================================================
@@ -5,7 +36,7 @@
 
 BUGS
 
-    o	The name of the first model was always "object" in the anova method for 
+    o	The name of the first model was always "object" in the anova method for
 		objects of formal class glimML.
 
 
