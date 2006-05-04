@@ -1,4 +1,18 @@
       =======================================================
+      CHANGES IN aod VERSION 1.1-10 (released on 5th May 2006)
+      =======================================================
+
+
+BUGS
+
+    o	The code of the log-likelihood function was changed in betabin and negbin to avoid
+        warnings when a covariate was used to model the within-group correlation, and one of the
+        "random" coeffcient was set to 0 (warnings were related to the use of ifelse).
+        These warnings caused a very slow execution with R 2.3.0, probably because of some
+        changes in the functions handling warnings and errors (tryCatch, etc.).
+
+
+      =======================================================
       CHANGES IN aod VERSION 1.1-9 (released on 1st May 2006)
       =======================================================
 

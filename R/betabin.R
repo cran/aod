@@ -115,10 +115,21 @@ betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
    eta <- as.vector(modmatrix.b %*% b)
    p <- invlink(eta, type = link)
    phi <- as.vector(modmatrix.phi %*% param[(nb.b + 1):(nb.b + nb.phi)])
-   fn <- ifelse(phi == 0,
-           dbinom(x = y, size = n, prob = p, log = TRUE),
-           lchoose(n,y) + lbeta(p * (1-phi)/phi + y, (1-p) * (1-phi)/phi + n-y) - lbeta(p*(1-phi)/phi, (1-p)*(1-phi)/phi))
-    fn <- sum(fn)
+
+# old code changed on 4th May 2006
+#   fn <- ifelse(phi == 0,
+#           dbinom(x = y, size = n, prob = p, log = TRUE),
+#           lchoose(n,y) + lbeta(p * (1-phi)/phi + y, (1-p) * (1-phi)/phi + n-y) - lbeta(p*(1-phi)/phi, (1-p)*(1-phi)/phi))
+#    fn <- sum(fn)
+
+# new code 4th May 2006
+   cnd <- phi == 0
+   f1 <- dbinom(x = y[cnd], size = n[cnd], prob = p[cnd], log = TRUE) 
+   n2 <- n[!cnd] ; y2 <- y[!cnd] ; p2 <- p[!cnd] ; phi2 <- phi[!cnd]
+   f2 <- lchoose(n2, y2) + lbeta(p2 * (1 - phi2)/phi2 + y2, (1 - p2) * (1 - phi2)/phi2 + n2 - y2) - lbeta(p2 * (1 - phi2)/phi2, (1 - p2) * (1 - phi2)/phi2)
+   fn <- sum(c(f1, f2))       
+# end new code 4th May 2006
+
     if(!is.finite(fn))
       fn <- -1e20
     -fn

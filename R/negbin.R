@@ -83,9 +83,20 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
     mu <- if(is.null(offset)) exp(eta) else exp(offset + eta)
     phi <- as.vector(modmatrix.phi %*% param[(nb.b + 1):(nb.b + nb.phi)])
     k <- 1 / phi 
-    fn <- ifelse(phi == 0, dpois(x = y, lambda = mu, log = TRUE), 
-                           lgamma(y + k) - lfactorial(y) - lgamma(k) + k * log(k / (k + mu)) + y * log(mu / (k + mu)))
-    fn <- sum(fn)
+
+## old code that caused problems with R 2.3.0 (ifelse producing many warnings ==> slow execution)
+#    fn <- ifelse(phi == 0, dpois(x = y, lambda = mu, log = TRUE), 
+#                           lgamma(y + k) - lfactorial(y) - lgamma(k) + k * log(k / (k + mu)) + y * log(mu / (k + mu)))
+#    fn <- sum(fn)
+
+# new code (2006-05-04)
+  cnd <- phi == 0
+  f1 <- dpois(x = y[cnd], lambda = mu[cnd], log = TRUE) 
+  y2 <- y[!cnd]; k2 <- k[!cnd]; mu2 <- mu[!cnd]
+  f2 <- lgamma(y2 + k2) - lfactorial(y2) - lgamma(k2) + k2 * log(k2 / (k2 + mu2)) + y2 * log(mu2 / (k2 + mu2))
+  fn <- sum(c(f1, f2))
+# end new code      
+
     if(!is.finite(fn))
       fn <- -1e20
     -fn
