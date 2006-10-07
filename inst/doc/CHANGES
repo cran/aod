@@ -1,3 +1,20 @@
+      ===========================================================
+      CHANGES IN aod VERSION 1.1-12 (released on 7th October 2006)
+      ===========================================================
+
+INSTALLATION
+
+    o	The package "boot" is now suggested to remove a warning during package installation.
+
+      ========================================================
+      CHANGES IN aod VERSION 1.1-11 (released on 1st July 2006)
+      ========================================================
+
+NEW FEATURES
+
+    o	The display of wald.test()'s output was slightly changed.
+
+
       =======================================================
       CHANGES IN aod VERSION 1.1-10 (released on 5th May 2006)
       =======================================================

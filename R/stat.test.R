@@ -55,9 +55,9 @@ print.wald.test <- function(x, digits = 2, ...){
     print(x[["L"]])
     cat("\nPositions of tested coefficients in the vector of coefficients:", paste(Terms, collapse = ", "), "\n")
     if(is.null(namb))
-      cat("\nH0: ", paste(paste(format(b[Terms], digits), H0, sep = " = "), collapse = "; "), "\n")
+      cat("\nH0: ", paste(paste(format(b[Terms], digits), format(H0, digits = digits), sep = " = "), collapse = "; "), "\n")
     else{
-      cat("\nH0: ", paste(paste(namb, H0, sep = " = "), collapse = "; "), "\n")
+      cat("\nH0: ", paste(paste(namb, format(H0, digits = digits), sep = " = "), collapse = "; "), "\n")
       }
 #    cat("\nTest results:\n")
     }
