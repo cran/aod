@@ -13,16 +13,15 @@
 \details{
   \tabular{ll}{
     Package: \tab aod\cr
-    Version: \tab 1.1-10\cr
-    Date: \tab 2006-05-04\cr
+    Version: \tab 1.1-13\cr
+    Date: \tab 2006-10-15\cr
     Depends: \tab R (>= 2.0.0), methods, stats\cr
-    Suggests: \tab MASS, nlme\cr
+    Suggests: \tab MASS, nlme, boot\cr
     License: \tab GPL version 2 or newer\cr
     URL: \tab http://cran.r-project.org/\cr
     LazyLoad: \tab yes\cr
     LazyData: \tab yes\cr
     SaveImage: \tab yes\cr
-    Built: \tab R 2.3.0; 2006-04-24; windows\cr
   }
 
 Index :
