@@ -2,7 +2,7 @@ if(!isGeneric("summary"))
   setGeneric(name = "summary", def = function(object, ...) standardGeneric("summary"))
 
 ## summary method for glimML objects
-setMethod("summary", signature = "glimML", 
+setMethod("summary", signature = "glimML",
   function(object){
 # function to insert NAs in se when there are NAs in b
     insNA <- function(b, se){
@@ -24,6 +24,14 @@ setMethod("summary", signature = "glimML",
     nb <- length(coef(object))
     param <- object@param
     vpar <- object@varparam
+# Checks whether any estimated variance was negative and replaces these elements with NA's
+    diagv <- diag(vpar)
+    if(!all(is.na(diagv))){
+      if(any(diagv[!is.na(diagv)] < 0)){
+        diagv[diagv < 0] <- NA
+        warning("At least one variance was < 0 in the var-cov matrix. Any such element was replaced with NA.\n")
+        }
+      }
 
 # position of fixed-effect coefficients
     pos1 <- seq(nb)
@@ -40,11 +48,11 @@ setMethod("summary", signature = "glimML",
 
 # compute new var-cov mat, coef vector and position of term(s) to be tested
     if(length(pos3) > 0){
-      vp3 <- as.matrix(vpar[pos3, pos3])
       b3 <- param[pos3]
+      v3 <- if(object@singular.hessian == 0 & !all(is.na(diagv))) diagv[pos3] else diagv
 
 # coef, se, z and t test
-      se3 <- sqrt(diag(vp3))
+      se3 <- sqrt(v3)
       se3 <- insNA(b3, se3)
       Coef <- data.frame(b = b3, se = se3, z = b3 / se3, P = 2 * (1 - pnorm(abs(b3) / se3)))
       nam <- names(b3)
@@ -57,12 +65,6 @@ setMethod("summary", signature = "glimML",
     if(length(pos4) > 0){
       FixedCoef <- data.frame(Value = param[pos4])
       }
-
-# overdispersion coefficients phi
-# need to check whether any coef was set to a fixed value
-    nb <- length(coef(object))
-    param <- object@param
-    vpar <- object@varparam
 
 # position of overdispersion parameters
     pos1 <- (nb + 1):length(param)
@@ -79,11 +81,15 @@ setMethod("summary", signature = "glimML",
 
 # compute new var-cov mat, coef vector and position of term(s) to be tested
     if(length(pos3) > 0){
-      vp3 <- as.matrix(vpar[pos3, pos3])
       b3 <- param[pos3]
-      se3 <- sqrt(diag(vp3))
-      se3 <- insNA(b3, se3)
-
+      if(object@singular.hessian == 0 & !all(is.na(diagv))){
+        va3 <- diagv[pos3]
+        va3[va3 < 0] <- NA
+        se3 <- sqrt(va3)
+        se3 <- insNA(b3, se3)
+        }
+      else
+        se3 <- rep(NA, length(b3))
 # coef, se, z and t test for phi
 # beware: unilateral test for phi because it cannot be negative
       if(any(b3 < 0))
@@ -107,7 +113,7 @@ setMethod("summary", signature = "glimML",
 
 
 ### show method for objects of class summary.glimML
-setMethod("show", signature = "summary.glimML", 
+setMethod("show", signature = "summary.glimML",
   function(object){
   Object <- object@object
 
@@ -120,10 +126,9 @@ setMethod("show", signature = "summary.glimML",
 # Checks whether convergence problems occurred
     n <- Object@code
     iter <- Object@iterations
-    if(n < 3)
+    msg <- Object@msg
+    if(n == 0)
       cat("\nConvergence was obtained after " , iter, " iterations.\n", sep = "")
-    else
-      cat("Possible convergence problem. Optimization process code:", n,"(see ?optim).\n")
 
 # Print estimated fixed effects, if any
     Coef <- object@Coef
@@ -132,10 +137,7 @@ setMethod("show", signature = "summary.glimML",
       List <- vector(mode = "list", length = 4)
       for(i in 1:4){
         x <- Coef[,i]
-        List[[i]] <- if(i < 4)
-                       format(round(x, 4), nsmall = 3)
-                     else
-                       ifelse(x < 1e-4, "< 1e-4", format(round(x, 4), nsmall = 3))
+        List[[i]] <- format(x, digits = 4, scientific = TRUE)
         }
       Coeftext <- as.data.frame(t(do.call("rbind", List)))
       rownames(Coeftext) <- nam
@@ -157,12 +159,15 @@ setMethod("show", signature = "summary.glimML",
     if(nrow(Phi) > 0){
       nam <- rownames(Phi)
       List <- vector(mode = "list", length = 4)
+#      for(i in 1:4){
+#        x <- Phi[,i]
+#        List[[i]] <- if(i < 4)
+#                       format(x, scientific = TRUE)
+#                     else
+#                       ifelse(x < 1e-4, "< 1e-4", format(x, scientific = TRUE))
       for(i in 1:4){
         x <- Phi[,i]
-        List[[i]] <- if(i < 4)
-                       format(round(x, 4), nsmall = 3)
-                     else
-                       ifelse(x < 1e-4, "< 1e-4", format(round(x, 4), nsmall = 3))
+        List[[i]] <- format(x, digits = 4, scientific = TRUE)
         }
       Phitext <- as.data.frame(t(do.call("rbind", List)))
       rownames(Phitext) <- nam
@@ -179,19 +184,13 @@ setMethod("show", signature = "summary.glimML",
       }
     akic <- AIC(Object)@istats; aic <- akic[,2]; aicc <- akic[,3]
 
-#    cat("\nLog-lik = ", format(round(Object@logL, 3), nsmall = 3), "; ", sep = "")
-#    cat("nbpar = ", Object@nbpar, "; ", sep = "")
-#    cat("df.residual = ", df.residual(Object), "; ", sep = "")
-#    cat("Deviance = ", format(round(deviance(Object), 3), nsmall = 3), "; ", sep = "")
-#    cat("AIC = ", format(round(aic, 3), nsmall = 3), "; ", sep = "")
-#    cat("AICc = ", format(round(aicc, 3), nsmall = 3), "\n\n", sep = "")
-    ll <- format(round(Object@logL, 3), nsmall = 3)
+    ll    <- format(Object@logL, digits = 4, scientific = TRUE)
     nbpar <- format(Object@nbpar)
     dfres <- format(df.residual(Object))
-    dev <- format(round(deviance(Object), 3), nsmall = 3)
-    aic <- format(round(akic[,2], 3), nsmall = 3)
-    aicc <- format(round(akic[,3], 3), nsmall = 3)
-    res <- c(ll, nbpar, dfres, dev, aic, aicc)
+    dev   <- format(deviance(Object), digits = 4, scientific = TRUE)
+    aic   <- format(akic[,2], digits = 4, scientific = TRUE)
+    aicc  <- format(akic[,3], digits = 4, scientific = TRUE)
+    res   <- c(ll, nbpar, dfres, dev, aic, aicc)
     names(res) <- c("Log-lik", "nbpar", "df res.", "Deviance", "AIC", "AICc")
     cat("\nLog-likelihood statistics\n")
     print(res, quote = FALSE)

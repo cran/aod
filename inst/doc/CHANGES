@@ -1,3 +1,44 @@
+      =============================================================
+      CHANGES IN aod VERSION 1.1-17 (released on 12th January 2007)
+      =============================================================
+
+NEW FEATURES
+
+    o	In negbin and betabin, display was switched to 4 digits in scientific notation.
+
+BUGS
+
+    o	No warning was issued when convergence was not obtained after optim iterations.
+    A slot "msg" was added to fitted objects of class "glimML" to store the message
+    returned by optim.
+
+    o	An error occurred when model was fitted with hessian = FALSE.
+
+DOCUMENTATION
+
+    o Documentation was changed to reflect these modifications.
+
+
+      ============================================================
+      CHANGES IN aod VERSION 1.1-14 (released on 9th January 2007)
+      ============================================================
+
+BUGS
+
+    o	A bug occurred when the hessian matrix was singular (overpameterized model)
+    in models fitted with betabin or negbin. This was fixed. A new slot "singular.hessian"
+    was added to fitted objects of class "glimML".
+    
+    o	There was a bug in the coef method for objects of class glimML when at least
+    one of the explanatory variable was a factor had unused levels. To overcome
+    this problem, new slots "fixed.param" and "random.param" were added to fitted
+    objects of class "glimML".
+
+DOCUMENTATION
+
+    o Documentation was changed to reflect these modifications.
+
+
       ============================================================
       CHANGES IN aod VERSION 1.1-13 (released on 15th October 2006)
       ============================================================

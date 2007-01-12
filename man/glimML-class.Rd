@@ -16,6 +16,8 @@
     \item{\code{data}}{Data set to which model was fitted. Different from the original data in case of missing value(s).}
     \item{\code{param}}{The vector of the ML estimated parameters \eqn{b} and \eqn{\phi}.}
     \item{\code{varparam}}{The variance-covariance matrix of the ML estimated parameters \eqn{b} and \eqn{\phi}.}
+    \item{\code{fixed.param}}{The vector of the ML estimated fixed-effect parameters \eqn{b}.}
+    \item{\code{random.param}}{The vector of the ML estimated random-effect (correlation) parameters \eqn{\phi}.}
     \item{\code{logL}}{The log-likelihood of the fitted model.}
     \item{\code{logL.max}}{The log-likelihood of the maximal model (data).}
     \item{\code{dev}}{The deviance of the model, i.e., \code{- 2 * (logL - logL.max)}.}
@@ -34,6 +36,8 @@
                  becomes asymptotic to a finite value from above in some direction or \code{stepmax} is too small.}
         }
       }
+    \item{\code{msg}}{Message returned by \code{optim}.}
+    \item{\code{singular.hessian}}{Logical: true when fitting provided a singular hessian, indicating an overparamaterized model.}
     \item{\code{param.ini}}{The initial values provided to the ML algorithm.}
     \item{\code{na.action}}{A function defining the action taken when missing values are encountered.}
     }

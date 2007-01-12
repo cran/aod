@@ -96,7 +96,8 @@
   data(dja)
   betabin(cbind(y, n - y) ~ group, ~ 1, dja)
   # heterogeneous phi
-  betabin(cbind(y, n - y) ~ group, ~ group, dja)
+  betabin(cbind(y, n - y) ~ group, ~ group, dja,
+          control = list(maxit = 1000))
   # phi fixed to zero in group TREAT
    betabin(cbind(y, n - y) ~ group, ~ group, dja,
     fixpar = list(4, 0))

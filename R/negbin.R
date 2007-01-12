@@ -5,13 +5,13 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
 # formula for the correlation parameters: random
   if(length(random) == 3){
     form <- deparse(random)
-    warning("The formula for rho (", form, ") contains a response which is ignored.")
+    warning("The formula for rho (", form, ") contains a response which will be ignored.")
     random <- random[-2]
     }
   explain <- as.character(attr(terms(random), "variables"))[-1]
   if(length(explain) > 1){
     warning("The formula for rho contains several explanatory variables (", paste(explain, collapse = ", "), ").\n",
-            "Only the first one (", explain[1], ") was considered.")
+            "Only the first one (", explain[1], ") will be considered.")
     explain <- explain[1]
     }
 
@@ -33,16 +33,12 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
   names(mfb)[2] <- "formula"
   mfb <- eval(mfb, parent.frame())
   mt <- attr(mfb, "terms")
+  modmatrix.b <- if(!is.empty.model(mt)) model.matrix(mt, mfb) else matrix(, NROW(y), 0)
   y <- model.response(mfb, "numeric")
-  modmatrix.b <- if(!is.empty.model(mt)) model.matrix(mt, mfb, contrasts) else matrix(, NROW(y), 0)
   offset <- model.offset(mfb)
-
-### change on 12th July 2005 (check lines with weight = 0)
 
   if(any(is.infinite(offset)))
     warning("The data set contains at least one line with weight = 0.\n")
-
-### end change
 
 # model frame and model matrix for the correlation structure
   mr <- match(c("random", "data", "na.action"), names(mf), 0)
@@ -69,8 +65,16 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
     }
   nb.b <- ncol(modmatrix.b)
   nb.phi <- ncol(modmatrix.phi)
-  if(is.null(phi.ini)) phi.ini <- rep(0.1, nb.phi)
+# check phi.ini
+  if(!is.null(phi.ini) && !(phi.ini < 1 & phi.ini > 0))
+    stop("phi.ini was set to ", phi.ini, ".\nphi.ini should verify 0 < phi.ini < 1")
+  else
+# intial values for phi.ini
+    if(is.null(phi.ini))
+      phi.ini <- rep(0.1, nb.phi)
+
   param.ini <- c(b, phi.ini) 
+
   if(!is.null(unlist(fixpar)))
     param.ini[fixpar[[1]]] <- fixpar[[2]]  
 
@@ -84,18 +88,11 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
     phi <- as.vector(modmatrix.phi %*% param[(nb.b + 1):(nb.b + nb.phi)])
     k <- 1 / phi 
 
-## old code that caused problems with R 2.3.0 (ifelse producing many warnings ==> slow execution)
-#    fn <- ifelse(phi == 0, dpois(x = y, lambda = mu, log = TRUE), 
-#                           lgamma(y + k) - lfactorial(y) - lgamma(k) + k * log(k / (k + mu)) + y * log(mu / (k + mu)))
-#    fn <- sum(fn)
-
-# new code (2006-05-04)
-  cnd <- phi == 0
-  f1 <- dpois(x = y[cnd], lambda = mu[cnd], log = TRUE) 
-  y2 <- y[!cnd]; k2 <- k[!cnd]; mu2 <- mu[!cnd]
-  f2 <- lgamma(y2 + k2) - lfactorial(y2) - lgamma(k2) + k2 * log(k2 / (k2 + mu2)) + y2 * log(mu2 / (k2 + mu2))
-  fn <- sum(c(f1, f2))
-# end new code      
+    cnd <- phi == 0
+    f1 <- dpois(x = y[cnd], lambda = mu[cnd], log = TRUE)
+    y2 <- y[!cnd]; k2 <- k[!cnd]; mu2 <- mu[!cnd]
+    f2 <- lgamma(y2 + k2) - lfactorial(y2) - lgamma(k2) + k2 * log(k2 / (k2 + mu2)) + y2 * log(mu2 / (k2 + mu2))
+    fn <- sum(c(f1, f2))
 
     if(!is.finite(fn))
       fn <- -1e20
@@ -132,23 +129,37 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
 
   if(!is.null(unlist(fixpar)))
     param[fixpar[[1]]] <- fixpar[[2]]
-  varparam <- NA
+
+###  Beginning changes provided by Matthieu Lesnoff on Jan 8th 2007
+  H <- H.singular <- NA
+  varparam <- matrix(NA)
   if(hessian){
     H <- res$hessian
-    if(is.null(unlist(fixpar)))
-      varparam <- qr.solve(H)
+    if(is.null(unlist(fixpar))){
+      H.singular <- if(qr(H)$rank < nrow(H)) TRUE else FALSE
+      if(!H.singular)
+        varparam <- qr.solve(H)
+      else
+        warning("The hessian matrix was singular.\n")
+        }
     else{
       idparam <- 1:(nb.b + nb.phi)
       idestim <- idparam[-fixpar[[1]]]
       Hr <- H[-fixpar[[1]], -fixpar[[1]]]
-      Vr <- solve(Hr)
-#      varparam <- H
-#      varparam[idestim, idestim] <- Vr
-      varparam <- matrix(rep(NA, NCOL(H) * NROW(H)), ncol = NCOL(H))
-      varparam[idestim, idestim] <- Vr
+      H.singular <- if(qr(Hr)$rank < nrow(Hr)) TRUE else FALSE
+      if(!H.singular) {
+        Vr <- solve(Hr) ; dimnames(Vr) <- list(idestim, idestim)
+        varparam <- matrix(rep(NA, NROW(H) * NCOL(H)), ncol = NCOL(H))
+        varparam[idestim, idestim] <- Vr
+        }
       }
     }
-  if(!is.null(dim(varparam)))
+  else
+    varparam  <- matrix(NA)
+
+### End of changes
+
+  if(any(!is.na(varparam)))
     dimnames(varparam) <- list(nam, nam)
     
   nbpar <- if(is.null(unlist(fixpar)))
@@ -161,9 +172,14 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
   df.residual <- length(y) - nbpar
   iterations <- res$counts[1]
   code <- res$convergence
+  msg <- if(!is.null(res$message)) res$message else character(0)
+
+  if(code != 0)
+    warning("\Possible convergence problem. Optimization process code: ", code, " (see ?optim).\n")
 
 # Output
   new(Class = "glimML", CALL = CALL, link = "log", method = "NB", data = data, formula = formula, random = random, 
-      param = param, varparam = varparam, logL = logL, logL.max = logL.max, dev = dev, df.residual = df.residual, 
-      nbpar = nbpar, iterations = iterations, code = code, param.ini = param.ini, na.action = na.action)
+      param = param, varparam = varparam, fixed.param = param[seq(along = namb)], random.param = param[-seq(along = namb)],
+      logL = logL, logL.max = logL.max, dev = dev, df.residual = df.residual, nbpar = nbpar, iterations = iterations,
+      code = code, msg = msg, singular.hessian = as.numeric(H.singular), param.ini = param.ini, na.action = na.action)
   }

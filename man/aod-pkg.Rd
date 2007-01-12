@@ -13,8 +13,8 @@
 \details{
   \tabular{ll}{
     Package: \tab aod\cr
-    Version: \tab 1.1-13\cr
-    Date: \tab 2006-10-15\cr
+    Version: \tab 1.1-17\cr
+    Date: \tab 2007-01-12\cr
     Depends: \tab R (>= 2.0.0), methods, stats\cr
     Suggests: \tab MASS, nlme, boot\cr
     License: \tab GPL version 2 or newer\cr
