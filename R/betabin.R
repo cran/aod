@@ -204,7 +204,7 @@ betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
   msg <- if(!is.null(res$message)) res$message else character(0)
 
   if(code != 0)
-    warning("\Possible convergence problem. Optimization process code: ", code, " (see ?optim).\n")
+    warning("\nPossible convergence problem. Optimization process code: ", code, " (see ?optim).\n")
 
 # Output
   new(Class = "glimML", CALL = CALL, link = link, method = "BB", data = data, formula = formula, random = random, 

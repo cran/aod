@@ -1,5 +1,5 @@
       =============================================================
-      CHANGES IN aod VERSION 1.1-17 (released on 12th January 2007)
+      CHANGES IN aod VERSION 1.1-18 (released on 13th January 2007)
       =============================================================
 
 NEW FEATURES
@@ -16,7 +16,8 @@ BUGS
 
 DOCUMENTATION
 
-    o Documentation was changed to reflect these modifications.
+    o Documentation was changed to reflect these modifications. Some messages released
+    by negbin and betabin were corrected.
 
 
       ============================================================
