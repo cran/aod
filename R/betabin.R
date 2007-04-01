@@ -1,6 +1,7 @@
 ### fitting function
-betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), phi.ini = NULL, warnings = FALSE, 
-                    na.action = na.omit, fixpar = list(), hessian = TRUE, ...){
+betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
+                    phi.ini = NULL, warnings = FALSE, na.action = na.omit, 
+                    fixpar = list(), hessian = TRUE, control = list(maxit = 2000), ...){
 # get the call
   CALL <- mf <- match.call(expand.dots = FALSE)
 
@@ -137,7 +138,7 @@ betabin <- function(formula, random, data = NULL, link = c("logit", "cloglog"), 
     val <- withCallingHandlers(expr, warning = wHandler)
     list(value = val, warnings = myWarnings)
     }
-  reswarn <- withWarnings(optim(par = param.ini, fn = minuslogL, hessian = hessian, ...))
+  reswarn <- withWarnings(optim(par = param.ini, fn = minuslogL, hessian = hessian, control = control, ...))
   res <- reswarn$value
   if(warnings){
     if(length(reswarn$warnings) > 0){

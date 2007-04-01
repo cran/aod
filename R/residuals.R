@@ -44,8 +44,8 @@ setMethod(f = "residuals", signature = "glimML", definition = function(object, t
                   pearson = r,
                   response = y - y.fit)
     }
-  if(!is.null(object$na.action)) 
-    res <- naresid(object$na.action, res)
+  if(!is.null(object@na.action)) 
+    res <- naresid(object@na.action, res)
   res
   })
 

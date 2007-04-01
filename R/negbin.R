@@ -1,5 +1,5 @@
 negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.action = na.omit,
-                   fixpar = list(), hessian = TRUE, ...){
+                   fixpar = list(), hessian = TRUE, control = list(maxit = 2000),...){
   CALL <- mf <- match.call(expand.dots = FALSE)
 
 # formula for the correlation parameters: random
@@ -109,7 +109,7 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
     val <- withCallingHandlers(expr, warning = wHandler)
     list(value = val, warnings = myWarnings)
     }
-  reswarn <- withWarnings(optim(par = param.ini, fn = minuslogL, hessian = hessian, ...))
+  reswarn <- withWarnings(optim(par = param.ini, fn = minuslogL, hessian = hessian, control = control, ...))
   res <- reswarn$value
   if(warnings){
     if(length(reswarn$warnings) > 0){

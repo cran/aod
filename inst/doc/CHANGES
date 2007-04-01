@@ -1,3 +1,19 @@
+      ==========================================================
+      CHANGES IN aod VERSION 1.1-19 (released on 1st April 2007)
+      ==========================================================
+
+NEW FEATURES
+
+    o	In negbin and betabin, the (default) maximum number of iterations was set
+      to 2000 in the call to optim. A new argument "control" was introduces in 
+      the 2 functions and their help pages were amended.
+
+BUGS
+
+    o	A bug was corrected in the residuals method for S4 objects of class glimML
+     (incorrect use of the extractor function "$" instead of "@").
+
+
       =============================================================
       CHANGES IN aod VERSION 1.1-18 (released on 13th January 2007)
       =============================================================

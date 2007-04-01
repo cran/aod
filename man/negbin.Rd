@@ -7,7 +7,7 @@
 \usage{
   negbin(formula, random, data, phi.ini = NULL, warnings = FALSE, 
          na.action = na.omit, fixpar = list(),
-         hessian = TRUE, \dots)
+         hessian = TRUE, control = list(maxit = 2000), \dots)
   }
 
 \arguments{
@@ -24,6 +24,7 @@
     For example, \code{fixpar = list(c(4, 5), c(0, 0))} means that 4th and 5th parameters of the model are set to 0.}
   \item{hessian}{A logical. When set to \code{FALSE}, the hessian and the variances-covariances matrices of the 
     parameters are not computed.}
+  \item{control}{A list to control the optimization parameters. See \code{\link{optim}}. By default, set the maximum number of iterations to 2000.}
   \item{\dots}{Further arguments passed to \code{\link{optim}}.}
     }
 

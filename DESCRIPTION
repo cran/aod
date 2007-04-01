@@ -1,6 +1,6 @@
 Package: aod
-Version: 1.1-18
-Date: 2007-01-13
+Version: 1.1-19
+Date: 2007-04-01
 Title: Analysis of Overdispersed Data
 Author: Matthieu Lesnoff <matthieu.lesnoff@cirad.fr> and Renaud Lancelot <renaud.lancelot@cirad.fr>
 Maintainer: Renaud Lancelot <renaud.lancelot@cirad.fr>
@@ -12,4 +12,4 @@ URL: http://cran.r-project.org/
 LazyLoad: yes
 LazyData: yes
 SaveImage: yes
-Packaged: Sat Jan 13 11:52:27 2007; LANCELOT
+Packaged: Sun Apr  1 15:45:46 2007; LANCELOT
