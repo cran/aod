@@ -11,7 +11,7 @@
 
 \usage{
   \S4method{predict}{glimML}(object, newdata = NULL, 
-    type = c("response", "link"), se.fit = FALSE, \dots)
+    type = "response", se.fit = FALSE, \dots)
   \S4method{predict}{glimQL}(object, newdata = NULL, 
     type = c("response", "link"), se.fit = FALSE, \dots)
   }

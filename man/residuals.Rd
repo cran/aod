@@ -13,8 +13,8 @@
   }
 
 \usage{
-  \S4method{residuals}{glimML}(object, type = c("pearson", "response", "link"), \dots)
-  \S4method{residuals}{glimQL}(object, type = c("pearson", "response", "link"), \dots)
+  \S4method{residuals}{glimML}(object, type = c("pearson", "response"), \dots)
+  \S4method{residuals}{glimQL}(object, type = c("pearson", "response"), \dots)
   }
 \arguments{
   \item{object}{Fitted model of formal class \dQuote{glimML} or \dQuote{glimQL}.}
