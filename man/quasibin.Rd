@@ -3,7 +3,7 @@
 \title{Quasi-Likelihood Model for Proportions}
 \description{The function fits the generalized linear model \dQuote{II} proposed by Williams (1982) accounting 
   for overdispersion in clustered binomial data \eqn{(n, y)}.}
-\usage{quasibin(formula, data, link = "logit", phi = NULL, tol =  0.001)}
+\usage{quasibin(formula, data, link = c("logit", "cloglog"), phi = NULL, tol =  0.001)}
 \arguments{
   \item{formula}{A formula for the fixed effects. The left-hand side of the formula must be of the form 
     \code{cbind(y, n - y)} where the modelled probability is \code{y/n}.}

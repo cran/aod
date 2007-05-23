@@ -1,4 +1,4 @@
-quasibin <- function(formula, data, link = "logit", phi = NULL, tol = 0.001){  
+quasibin <- function(formula, data, link = c("logit", "cloglog"), phi = NULL, tol = 0.001){  
 # utility function to remove white spaces at the beginning and at the end of character strings
   tr <- function(string) gsub("^[[:space:]]+|[[:space:]]+$", "", string)
 ## check call validity

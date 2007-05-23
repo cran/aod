@@ -1,4 +1,15 @@
       =========================================================
+      CHANGES IN aod VERSION 1.1-22 (released on 23rd May 2007)
+      =========================================================
+
+
+New
+
+    o The cloglog link was missing for quasibin models (though it was
+      indicated in the documentation).
+
+
+      =========================================================
       CHANGES IN aod VERSION 1.1-21 (released on 7th April 2007)
       =========================================================
 
