@@ -1,3 +1,37 @@
+      ==============================================================
+      CHANGES IN aod VERSION 1.1-24 (released on 30th September 2007)
+      ==============================================================
+
+
+Changes
+
+    o Maintenance change in the file dja.Rd to comply with new recommandations
+      as from 2.6.0.
+
+
+       ==============================================================
+      CHANGES IN aod VERSION 1.1-23 (released on 29th September 2007)
+      ==============================================================
+
+
+Changes
+
+    o Maintenance change in the file DESCRIPTION to comply with new recommandations
+      as from 2.6.0.
+
+
+
+      =========================================================
+      CHANGES IN aod VERSION 1.1-22 (released on 23rd May 2007)
+      =========================================================
+
+
+New
+
+    o The cloglog link was missing for quasibin models (though it was
+      indicated in the documentation).
+
+
       =========================================================
       CHANGES IN aod VERSION 1.1-22 (released on 23rd May 2007)
       =========================================================

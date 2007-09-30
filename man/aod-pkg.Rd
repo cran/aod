@@ -2,8 +2,7 @@
 \alias{aod-pkg}
 \alias{aod}
 \docType{package}
-\title{Analysis of Overdispersed Data
-  }
+\title{Analysis of Overdispersed Data}
 \description{
   This package provides a set of functions to analyse overdispersed counts or proportions. Most of the methods are
   already available elsewhere but are scattered in different packages. The proposed functions should be considered as
@@ -13,15 +12,14 @@
 \details{
   \tabular{ll}{
     Package: \tab aod\cr
-    Version: \tab 1.1-21\cr
-    Date: \tab 2007-04-07\cr
+    Version: \tab 1.1-24\cr
+    Date: \tab 2007-09-30\cr
     Depends: \tab R (>= 2.0.0), methods, stats\cr
     Suggests: \tab MASS, nlme, boot\cr
     License: \tab GPL version 2 or newer\cr
     URL: \tab http://cran.r-project.org/\cr
     LazyLoad: \tab yes\cr
     LazyData: \tab yes\cr
-    SaveImage: \tab yes\cr
   }
 
 Index :
