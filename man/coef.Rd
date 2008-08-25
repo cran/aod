@@ -1,7 +1,7 @@
 \name{coef-methods}
 \docType{methods}
-\alias{coef-methods}
-\alias{coef,ANY-method}
+%\alias{coef-methods}
+%\alias{coef,ANY-method}
 \alias{coef,glimML-method}
 \alias{coef,glimQL-method}
 \title{Methods for Function "coef" in Package "aod"}

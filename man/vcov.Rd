@@ -1,7 +1,7 @@
 \name{vcov-methods}
 \docType{methods}
-\alias{vcov-methods}
-\alias{vcov,ANY-method}
+%\alias{vcov-methods}
+%\alias{vcov,ANY-method}
 \alias{vcov,glimML-method}
 \alias{vcov,glimQL-method}
 \alias{geese-class}

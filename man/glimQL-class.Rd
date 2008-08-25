@@ -5,7 +5,7 @@
 \title{Representation of Models of Formal Class "glimQL"}
 \description{Representation of models of formal class "glimQL" fitted by quasi-likelihood method.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("glimQL", ...)} or, 
-  more commonly, via the \code{quasibin} or \code{quasipois} functions.}}
+  more commonly, via the \code{quasibin} or \code{quasipois} functions.}
 \section{Slots}{
   \describe{
     \item{\code{CALL}}{The call of the function.}

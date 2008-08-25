@@ -42,7 +42,6 @@
 \seealso{\code{\link{glm}}, \code{\link[geepack]{geese}} in the contributed package \pkg{geepack}, 
   \code{\link[dispmod]{glm.binomial.disp}} in the contributed package \pkg{dispmod}.}
 
- }
 \examples{
   data(orob2) 
   fm1 <- glm(cbind(y, n - y) ~ seed * root,
@@ -73,4 +72,5 @@
   # compare with fm3's X2
   sum(residuals(fm4, type = "pearson")^2)
   }
+  
 \keyword{regression}

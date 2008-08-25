@@ -12,12 +12,12 @@
 \details{
   \tabular{ll}{
     Package: \tab aod\cr
-    Version: \tab 1.1-24\cr
-    Date: \tab 2007-09-30\cr
+    Version: \tab 1.1-27\cr
+    Date: \tab 2008-08-25\cr
     Depends: \tab R (>= 2.0.0), methods, stats\cr
     Suggests: \tab MASS, nlme, boot\cr
     License: \tab GPL version 2 or newer\cr
-    URL: \tab http://cran.r-project.org/\cr
+    URL: \tab http://cran.r-project.org/, http://forums.cirad.fr/logiciel-R/\cr
     LazyLoad: \tab yes\cr
     LazyData: \tab yes\cr
   }

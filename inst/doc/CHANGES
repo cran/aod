@@ -1,3 +1,23 @@
+      ============================================================
+      CHANGES IN aod VERSION 1.1-27 (released on 25th August 2008)
+      ============================================================
+
+New
+
+    o CITATION file.
+
+Changes
+
+    o Alter the functions to compute AIC and AICc to avoid redefining standard
+      generic functions from the stats package, after a bug report on R-Help and
+      suggestions by P Dalgaard and M Maechler.
+      
+    o Alter functions betabin and negbin to better manage the case when the Hessian
+      matrix is singular.
+
+    o Many invisible changes in documentation to comply with more stringent checks
+      during package installation and building.
+
       ==============================================================
       CHANGES IN aod VERSION 1.1-24 (released on 30th September 2007)
       ==============================================================
@@ -20,22 +40,9 @@ Changes
       as from 2.6.0.
 
 
-
       =========================================================
       CHANGES IN aod VERSION 1.1-22 (released on 23rd May 2007)
       =========================================================
-
-
-New
-
-    o The cloglog link was missing for quasibin models (though it was
-      indicated in the documentation).
-
-
-      =========================================================
-      CHANGES IN aod VERSION 1.1-22 (released on 23rd May 2007)
-      =========================================================
-
 
 New
 
@@ -47,7 +54,6 @@ New
       CHANGES IN aod VERSION 1.1-21 (released on 7th April 2007)
       =========================================================
 
-
 DOCUMENTATION
 
     o Mismatches were fixed between arguments in the code and documentation 
@@ -57,7 +63,6 @@ DOCUMENTATION
       =========================================================
       CHANGES IN aod VERSION 1.1-20 (released on 4th April 2007)
       =========================================================
-
 
 DOCUMENTATION
 

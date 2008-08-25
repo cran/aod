@@ -130,13 +130,15 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
   if(!is.null(unlist(fixpar)))
     param[fixpar[[1]]] <- fixpar[[2]]
 
-###  Beginning changes provided by Matthieu Lesnoff on Jan 8th 2007
+###  Beginning changes provided by Matthieu Lesnoff on Jan 8th 2007 + Aug 25th 2008
   H <- H.singular <- NA
   varparam <- matrix(NA)
+  is.singular <- function(X) qr(X)$rank < nrow(as.matrix(X))  
   if(hessian){
     H <- res$hessian
     if(is.null(unlist(fixpar))){
-      H.singular <- if(qr(H)$rank < nrow(H)) TRUE else FALSE
+#      H.singular <- if(qr(H)$rank < nrow(H)) TRUE else FALSE
+      H.singular <- is.singular(H)
       if(!H.singular)
         varparam <- qr.solve(H)
       else
@@ -145,9 +147,10 @@ negbin <- function(formula, random, data, phi.ini = NULL, warnings = FALSE, na.a
     else{
       idparam <- 1:(nb.b + nb.phi)
       idestim <- idparam[-fixpar[[1]]]
-      Hr <- H[-fixpar[[1]], -fixpar[[1]]]
-      H.singular <- if(qr(Hr)$rank < nrow(Hr)) TRUE else FALSE
-      if(!H.singular) {
+      Hr <- as.matrix(H[-fixpar[[1]], -fixpar[[1]]])
+#      H.singular <- if(qr(Hr)$rank < nrow(Hr)) TRUE else FALSE
+      H.singular <- is.singular(Hr)      
+      if(!H.singular){
         Vr <- solve(Hr) ; dimnames(Vr) <- list(idestim, idestim)
         varparam <- matrix(rep(NA, NROW(H) * NCOL(H)), ncol = NCOL(H))
         varparam[idestim, idestim] <- Vr

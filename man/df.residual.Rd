@@ -1,7 +1,7 @@
 \name{df.residual-methods}
 \docType{methods}
-\alias{df.residual-methods}
-\alias{df.residual,ANY-method}
+%\alias{df.residual-methods}
+%\alias{df.residual,ANY-method}
 \alias{df.residual,glimML-method}
 
 \title{Methods for Function "df.residual" in Package "aod"}

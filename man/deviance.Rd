@@ -1,7 +1,7 @@
 \name{deviance-methods}
 \docType{methods}
-\alias{deviance-methods}
-\alias{deviance,ANY-method}
+%\alias{deviance-methods}
+%\alias{deviance,ANY-method}
 \alias{deviance,glimML-method}
 
 \title{Methods for Function "deviance" in Package "aod"}

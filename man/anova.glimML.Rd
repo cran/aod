@@ -1,7 +1,7 @@
 \name{anova-methods}
 \docType{methods}
-\alias{anova-method}
-\alias{anova,ANY-method}
+%\alias{anova-method}
+%\alias{anova,ANY-method}
 \alias{anova,glimML-method}
 \alias{anova.glimML-class}
 \alias{show,anova.glimML-method}

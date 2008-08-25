@@ -6,7 +6,7 @@
 \description{Representation of the output of function \code{varbin} used to estimate proportions and their variance 
              under various distribution assumptions.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("varbin", ...)} or, more commonly,
-  via the function \code{varbin}.}}
+  via the function \code{varbin}.}
 \section{Slots}{
   \describe{
     \item{\code{CALL}}{The call of the function.}

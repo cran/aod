@@ -4,7 +4,7 @@
 \title{Representation of Objects of Formal Class "icc"}
 \description{Representation of the output of function \code{icc}.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("icc", ...)} or, more commonly,
-  via the function \code{icc}.}}
+  via the function \code{icc}.}
 \section{Slots}{
   \describe{
     \item{\code{CALL}}{The call of the function.}

@@ -1,7 +1,7 @@
 \name{residuals-methods}
 \docType{methods}
-\alias{residuals-methods}
-\alias{residuals,ANY-method}
+%\alias{residuals-methods}
+%\alias{residuals,ANY-method}
 \alias{residuals,glimML-method}
 \alias{residuals,glimQL-method}
 

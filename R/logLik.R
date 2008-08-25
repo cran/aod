@@ -12,16 +12,24 @@ setMethod(f = "logLik", signature = "glimML", definition = function(object, ...)
 if(!isGeneric("AIC"))
   setGeneric("AIC", function(object, ..., k = 2) standardGeneric("AIC"))
 
-setMethod(f = "AIC", signature = "logLik", definition = function(object, ..., k = 2){
-  npar <- attr(object, "df")
-  nobs <- attr(object, "nobs")
-  c(AIC = -2 * c(object) + k * npar, AICc = -2 * c(object) + k * npar + 2 * npar * (npar + 1) / (nobs - npar - 1))
-  })
+## Removed to comply with recommandations on avoiding to redefine generic functions from the stats package (24 Aug 2008)
+##setMethod(f = "AIC", signature = "logLik", definition = function(object, ..., k = 2){
+##  npar <- attr(object, "df")
+##  nobs <- attr(object, "nobs")
+##  c(AIC = -2 * c(object) + k * npar, AICc = -2 * c(object) + k * npar + 2 * npar * (npar + 1) / (nobs - npar - 1))
+##  })
             
 setMethod(f = "AIC", signature = "glimML", definition = function(object, ..., k = 2){
+  ## local function to compute AIC and AICc
+  AIC1 <- function(x, k = k){
+  npar <- attr(x, "df")
+  nobs <- attr(x, "nobs")
+  c(AIC = -2 * as.vector(x) + k * npar, AICc = -2 * as.vector(x) + k * npar + 2 * npar * (npar + 1) / (nobs - npar - 1))
+  }
+  ## Actual computation
   object <- list(object, ...)
   val <- lapply(object, logLik)
-  val <- as.data.frame(t(sapply(val, function(el) c(attr(el, "df"), AIC(el, k = 2)))))
+  val <- as.data.frame(t(sapply(val, function(el) c(attr(el, "df"), AIC1(el, k = k)))))
   names(val) <- c("df", "AIC", "AICc")
   Call <- match.call()
   Call$k <- NULL

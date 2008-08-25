@@ -94,7 +94,14 @@ setMethod("summary", signature = "glimML",
 # beware: unilateral test for phi because it cannot be negative
       if(any(b3 < 0))
         warning("Negative values for phi.")
-      Phi <- data.frame(b = b3, se = se3, z = b3 / se3, P = 1 - pnorm(abs(b3) / se3))
+
+## Modif R Lancelot 26/08/2008 suite à remarque de F Bonnot et proposition de M Lesnoff
+      Phi <- data.frame(b  = b3,
+                        se = se3,
+                        z = ifelse(se3 <= 2e-13, 0, b3 / se3),
+                        P = ifelse(se3 <= 2e-13, 1, 1 - pnorm(abs(b3) / se3)))
+## fin modif
+
       nam <- names(b3)
       rownames(Phi) <- nam
       colnames(Phi) <- c("Estimate", "Std. Error", "z value", "Pr(> z)")

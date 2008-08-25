@@ -2,14 +2,13 @@
 \alias{wald.test}
 \alias{print.wald.test}
 \title{Wald Test for Model Coefficients}
-\description{
-  Computes a Wald \eqn{\chi^2}{chi-squared} test for 1 or more coefficients, given their variance-covariance matrix.
-  }
+\description{Computes a Wald \eqn{\chi^2}{chi-squared} test for 1 or more coefficients, given their variance-covariance matrix.}
 \usage{
   wald.test(Sigma, b, Terms = NULL, L = NULL, H0 = NULL,  
             df = NULL, verbose = FALSE)
   \method{print}{wald.test}(x, digits = 2, ...)
   }
+
 \arguments{
   \item{Sigma}{
     A var-cov matrix, usually extracted from one of the fitting functions (e.g., \code{lm}, \code{glm}, ...).
@@ -69,7 +68,7 @@
   Draper, N.R., Smith, H., 1998. Applied Regression Analysis. New York, John Wiley & Sons, Inc., 706 p.
   }
 
-\seealso{ \code{\link{vcov}} } }
+\seealso{ \code{\link{vcov}} } 
 
 \examples{
   data(orob2)

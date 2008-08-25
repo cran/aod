@@ -1,7 +1,7 @@
 \name{logLik-methods}
 \docType{methods}
-\alias{logLik-methods}
-\alias{logLik,ANY-method}
+%\alias{logLik-methods}
+%\alias{logLik,ANY-method}
 \alias{logLik,glimML-method}
 
 \title{Methods for Functions "logLik" in Package "aod"}

@@ -1,7 +1,7 @@
 \name{fitted-methods}
 \docType{methods}
-\alias{fitted-methods}
-\alias{fitted,ANY-method}
+%\alias{fitted-methods}
+%\alias{fitted,ANY-method}
 \alias{fitted,glimML-method}
 \alias{fitted,glimQL-method}
 \title{Methods for Function "fitted" in Package "aod"}
