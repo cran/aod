@@ -51,5 +51,5 @@ setMethod(f = "predict", signature = "glimML",
 
 ## predicted values for models of class glimQL (functions quasibin and quasipois)
 setMethod(f = "predict", signature(object = "glimQL"),
-          function(object, newdata = NULL, type = "response", se.fit = FALSE, ...) 
+          function(object, newdata = NULL, type = c("response", "link"), se.fit = FALSE, ...) 
             predict(object@fm, newdata = newdata, type = type, se.fit = se.fit, ...))
