@@ -3,7 +3,7 @@ if(!isGeneric("predict"))
 
 ## predicted values for models of class glimML (functions betabin and betapois)
 setMethod(f = "predict", signature = "glimML",
-          definition = function(object, newdata = NULL, type = "response", se.fit = FALSE, ...){
+          definition = function(object, newdata = NULL, type = c("response", "link"), se.fit = FALSE, ...){
   type <- match.arg(type)
   mf <- object@CALL
   b <- coef(object)

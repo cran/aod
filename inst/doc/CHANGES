@@ -1,4 +1,14 @@
       ============================================================
+      CHANGES IN aod VERSION 1.1-28 (released on 10th October 2008)
+      ============================================================
+
+Bug
+
+    o Corrected a bug in the predict method for objects of classe glimML and 
+    glimQL, and its documentation.
+
+
+      ============================================================
       CHANGES IN aod VERSION 1.1-27 (released on 25th August 2008)
       ============================================================
 
