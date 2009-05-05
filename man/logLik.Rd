@@ -22,7 +22,7 @@
   }}
 
 \value{
-  A numeric scalar with 2 attributes: \dQuote(df) (number of parameters in the model) and \dQuote{nobs} 
+  A numeric scalar with 2 attributes: \dQuote{df} (number of parameters in the model) and \dQuote{nobs}
   (number of observations = degrees of freedom of the residuals + number of parameters in the model).
   }
 

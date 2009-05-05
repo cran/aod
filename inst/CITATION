@@ -1,6 +1,7 @@
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("aod")
 citHeader("To cite package 'aod' in publications use:")
 desc <- packageDescription("aod")
-year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", desc$Date)
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", desc$Version)
 citEntry(entry       = "Manual",
          title       = "aod: Analysis of Overdispersed Data",
@@ -8,9 +9,9 @@ citEntry(entry       = "Manual",
                                   as.person("Lancelot, R.")),
          year        = year,
          note        = vers,
-         url         = "http://cran.r-project.org",
+         url         = "http://cran.r-project.org/package=aod",
          textVersion = paste("Lesnoff, M., Lancelot, R. (",
                              year,
                              "). aod: Analysis of Overdispersed Data. ",
                              vers,
-                             ", URL http://cran.r-project.org", sep = ""))
+                             ", URL http://cran.r-project.org/package=aod", sep = ""))
