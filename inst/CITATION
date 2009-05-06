@@ -1,8 +1,7 @@
 if(!exists("meta") || is.null(meta)) meta <- packageDescription("aod")
 citHeader("To cite package 'aod' in publications use:")
-desc <- packageDescription("aod")
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
-vers <- paste("R package version", desc$Version)
+vers <- paste("R package version", meta$Version)
 citEntry(entry       = "Manual",
          title       = "aod: Analysis of Overdispersed Data",
          author      = personList(as.person("Lesnoff, M."),
