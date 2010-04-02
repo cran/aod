@@ -1,6 +1,6 @@
 Package: aod
-Version: 1.1-31
-Date: 2009-05-06
+Version: 1.1-32
+Date: 2010-04-02
 Title: Analysis of Overdispersed Data
 Author: Matthieu Lesnoff <matthieu.lesnoff@cirad.fr> and Renaud
         Lancelot <renaud.lancelot@cirad.fr>
@@ -16,8 +16,9 @@ Description: This package provides a set of functions to analyse
         models (GLMM).
 License: GPL (>= 2)
 URL: http://cran.r-project.org/package=aod
+Encoding: latin1
 LazyLoad: yes
 LazyData: yes
-Packaged: 2009-05-06 06:13:22 UTC; LANCELOT
+Packaged: 2010-04-02 17:12:46 UTC; LANCELOT
 Repository: CRAN
-Date/Publication: 2009-05-06 12:00:52
+Date/Publication: 2010-04-03 07:59:20

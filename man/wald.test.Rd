@@ -31,7 +31,7 @@
     must have the same number of columns as \code{L}. Default to 0 for all the coefficients to be tested.
     }
   \item{df}{
-    A numeric scalar giving the degrees of freedom to be used in an \eqn{F} test, i.e. the degrees of freedom 
+    A numeric vector giving the degrees of freedom to be used in an \eqn{F} test, i.e. the degrees of freedom 
     of the residuals of the model from which \code{b} and \code{Sigma} were fitted. Default to NULL, for no 
     \eqn{F} test. See the section \bold{Details} for more information.
     }

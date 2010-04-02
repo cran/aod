@@ -65,7 +65,7 @@ print.wald.test <- function(x, digits = 2, ...){
   cat("X2 = ", format(v["chi2"], digits = digits, nsmall = 1), ", df = ", v["df"],
       ", P(> X2) = ", format(v["P"], digits = digits, nsmall = 1), "\n", sep = "")
   if(!is.null(df)){
-    v <- x[["res"]][["Ftest"]]
+    v <- x[["result"]][["Ftest"]]
     cat("\nF test:\n")
     cat("W = ", format(v["Fstat"], digits = digits, nsmall = 1), 
         ", df1 = ", v["df1"],

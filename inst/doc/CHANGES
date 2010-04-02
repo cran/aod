@@ -1,3 +1,17 @@
+      ==========================================================
+      CHANGES IN aod VERSION 1.1-32 (released on 2nd April 2010)
+      ==========================================================
+
+Bug
+
+    o Corrected a bug in the print method for Wald test objects.
+    
+New feature
+
+    o df.residual method for objects of class glimQL, and corresponding
+    changes in the documentation.
+    
+
       ============================================================
       CHANGES IN aod VERSION 1.1-29 (released on 10th October 2008)
       ============================================================
