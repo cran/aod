@@ -1,31 +1,60 @@
 \name{splitbin}
 \alias{splitbin}
-\title{Splits Binomial Data into Bernoulli Data}
+\title{Split Grouped Data Into Individual Data}
+\encoding{latin1}
+
 \description{
-  Splits binomial data (n, y) and optional covariates into Bernoulli data (0 or 1) and the corresponding covariates.
+  The function splits grouped data and optional covariates into individual data.
+  Two types of grouped data are managed by \code{splitbin}:
+     \itemize{
+        \item Grouped data with weights;
+        \item Grouped data of form \code{cbind(success, failure)}.
+        }
+  When weights, successes or failures involve non-integer numbers, these numbers are rounded before splitting.
   }
+
 \usage{
-  splitbin(formula, data, id = "id")
+  splitbin(formula, data, id = "idbin")
   }
+
 \arguments{
-  \item{formula}{A formula: its left-hand side must be of the form \code{cbind(y, n - y)} where the modelled 
-    probability is \code{y/n}. The right-hand side indicates the covariates which are considered in the ungrouped 
-    data set.}
-  \item{data}{A data frame where all the variables described in \code{n}, \code{y} and \code{formula} are found.}
-  \item{id}{An optional character string naming the identifier (= grouping factor). Default to \dQuote{id}.}
+  \item{formula}{A formula. The left-hand side represents grouped data.
+    The right-hand side defines the covariates. See examples for syntax.}
+  \item{data}{A data frame where all the variables described in \code{formula} are found.}
+  \item{id}{An optional character string naming the identifier (= grouping factor). Default to \dQuote{idbin}.}
   }
-\details{
-  Any variable of mode character is converted into a factor before data processing.\cr
-  Each line (with \eqn{n > 0}) of the initial data set generates \eqn{n} lines in the final data set with the same 
-  covariate pattern, plus an identifier (named \dQuote{id}, by default). The value of this identifier is the row 
-  name from which it was expanded in the initial data set.
-  }
+
 \value{
-  A data frame with response and covariates as indicated in the formula, plus the identifier.
+  A data frame built according to the formula and function used in the call.
   }
+
 \examples{
-  data(orob1)
-  splitbin(cbind(y, n - y) ~ 1, orob1)
-  splitbin(cbind(y, n - y) ~ dilution, orob1)
-  }
+# Grouped data with weights
+mydata <- data.frame(
+    success = c(0, 1, 0, 1),
+    f1 = c("A", "A", "B", "B"),
+    f2 = c("C", "D", "C", "D"),
+    n = c(4, 2, 1, 3)
+    )
+mydata
+splitbin(formula = n ~ f1, data = mydata)$tab
+splitbin(formula = n ~ f1 + f2 + success , data = mydata)$tab
+
+# Grouped data of form "cbind(success, failure)"
+mydata <- data.frame(
+    success = c(4, 1),
+    failure = c(1, 2),
+    f1 = c("A", "B"),
+    f2 = c("C", "D")
+    )
+mydata$n <- mydata$success + mydata$failure
+mydata
+splitbin(formula = cbind(success, failure) ~ 1, data = mydata)$tab
+splitbin(formula = cbind(success, failure) ~ f1 + f2, data = mydata)$tab
+splitbin(formula = cbind(success, n - success) ~ f1 + f2, data = mydata)$tab
+splitbin(formula = cbind(success, n - 0.5 * failure - success) ~ f1 + f2,
+         data = mydata)$tab
+}
+
 \keyword{datagen}
+

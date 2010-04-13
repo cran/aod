@@ -10,9 +10,11 @@ icc <- function(n, y, data, method = c("REML", "ML"), R = NULL){
     warning("Data with ", deparse(substitute(n)), " <= 0 were discarded.")
   names(datan) <- c("n", "y")
   datan <- datan[datan$n > 0, ]                                                          
-  databin <- splitbin(cbind(y, n - y) ~ 1, datan)
+  databin <- splitbin(cbind(y, n - y) ~ 1, datan)$tab
 # REML/ML method
-  fm <- lme(fixed = y ~ 1, random = ~ 1 | id, data = databin, method = method)
+  resp <- names(databin)[2]
+  f <- as.formula(paste(resp, "~ 1"))
+  fm <- lme(fixed = f, random = ~ 1 | idbin, data = databin, method = method)
   nu <- attr(fm$apVar, "Pars")
   varnu <- fm$apVar
   rho <- as.numeric(exp(2 * nu[1]) / (exp(2 * nu[1]) + exp(2 * nu[2])))
@@ -21,7 +23,8 @@ icc <- function(n, y, data, method = c("REML", "ML"), R = NULL){
   varrho <- as.numeric(t(drho) %*% varnu %*% drho)
 # ANOVA method
   k <- nrow(datan) ; n <- datan$n ; N <- sum(n) ; nA <- (N - sum(n^2) / N) / (k - 1) ; p <- sum(datan$y) / N
-  lfm <- lm(y ~ as.factor(id), databin)
+  f <- as.formula(paste(resp, "~ factor(idbin)"))
+  lfm <- lm(f, data = databin)
   a <- anova(lfm)
   f <- c(F.value = a[1, 4], df.num = a[1, 1], df.denom = a[2, 1], P = a[1, 5])
   rho.anova <- (f[1] - 1) / (f[1] + nA - 1)

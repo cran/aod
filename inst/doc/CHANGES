@@ -1,4 +1,16 @@
       ==========================================================
+      CHANGES IN aod VERSION 1.1-33 (released on 13 April 2010)
+      ==========================================================
+
+Changes
+
+    o Synchronise version of splitbin and its help page with version available
+      in package tdisplay http://forums.cirad.fr/logiciel-R/viewforum.php?f=5.
+      
+    o Internal changes in function icc to reflect changes in splitbin.
+      
+
+      ==========================================================
       CHANGES IN aod VERSION 1.1-32 (released on 2nd April 2010)
       ==========================================================
 
