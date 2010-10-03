@@ -1,3 +1,15 @@
+      ========================================================
+      CHANGES IN aod VERSION 1.1-34 (released on 03 Oct 2010)
+      ========================================================
+
+Changes
+
+    o Corrects a bug in the shwo method for objects of class icc
+      (error in the computation of the F test).
+
+    o Improved description of the icc function (help page).
+
+
       ==========================================================
       CHANGES IN aod VERSION 1.1-33 (released on 13 April 2010)
       ==========================================================
@@ -6,9 +18,9 @@ Changes
 
     o Synchronise version of splitbin and its help page with version available
       in package tdisplay http://forums.cirad.fr/logiciel-R/viewforum.php?f=5.
-      
+
     o Internal changes in function icc to reflect changes in splitbin.
-      
+
 
       ==========================================================
       CHANGES IN aod VERSION 1.1-32 (released on 2nd April 2010)
@@ -17,12 +29,12 @@ Changes
 Bug
 
     o Corrected a bug in the print method for Wald test objects.
-    
+
 New feature
 
     o df.residual method for objects of class glimQL, and corresponding
     changes in the documentation.
-    
+
 
       ============================================================
       CHANGES IN aod VERSION 1.1-29 (released on 10th October 2008)
@@ -30,7 +42,7 @@ New feature
 
 Bug
 
-    o Corrected a bug in the predict method for objects of classe glimML and 
+    o Corrected a bug in the predict method for objects of classe glimML and
     glimQL, and its documentation.
 
 
@@ -47,7 +59,7 @@ Changes
     o Alter the functions to compute AIC and AICc to avoid redefining standard
       generic functions from the stats package, after a bug report on R-Help and
       suggestions by P Dalgaard and M Maechler.
-      
+
     o Alter functions betabin and negbin to better manage the case when the Hessian
       matrix is singular.
 
@@ -92,7 +104,7 @@ New
 
 DOCUMENTATION
 
-    o Mismatches were fixed between arguments in the code and documentation 
+    o Mismatches were fixed between arguments in the code and documentation
       (predict methods for objects of classes glimML and glimPQL).
 
 
@@ -102,7 +114,7 @@ DOCUMENTATION
 
 DOCUMENTATION
 
-    o Mismatches were fixed between arguments in the code and documentation 
+    o Mismatches were fixed between arguments in the code and documentation
       (residuals methods for objects of classes glimML and glimPQL).
 
 
@@ -113,7 +125,7 @@ DOCUMENTATION
 NEW FEATURES
 
     o	In negbin and betabin, the (default) maximum number of iterations was set
-      to 2000 in the call to optim. A new argument "control" was introduces in 
+      to 2000 in the call to optim. A new argument "control" was introduces in
       the 2 functions and their help pages were amended.
 
 BUGS
@@ -153,7 +165,7 @@ BUGS
     o	A bug occurred when the hessian matrix was singular (overpameterized model)
     in models fitted with betabin or negbin. This was fixed. A new slot "singular.hessian"
     was added to fitted objects of class "glimML".
-    
+
     o	There was a bug in the coef method for objects of class glimML when at least
     one of the explanatory variable was a factor had unused levels. To overcome
     this problem, new slots "fixed.param" and "random.param" were added to fitted
