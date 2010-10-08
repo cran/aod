@@ -1,3 +1,15 @@
+      ====================================================
+      CHANGES IN aod VERSION 1.2 (released on 08 Oct 2010)
+      ====================================================
+
+Changes
+
+    o Function icc was removed and replaced with function iccbin, with
+      several computations methods for the intra-class correlation 
+      coefficient in the case of binomial data.
+
+    o Help pages were changed accordingly.
+
       ========================================================
       CHANGES IN aod VERSION 1.1-35 (released on 04 Oct 2010)
       ========================================================

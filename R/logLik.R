@@ -18,7 +18,7 @@ if(!isGeneric("AIC"))
 ##  nobs <- attr(object, "nobs")
 ##  c(AIC = -2 * c(object) + k * npar, AICc = -2 * c(object) + k * npar + 2 * npar * (npar + 1) / (nobs - npar - 1))
 ##  })
-            
+
 setMethod(f = "AIC", signature = "glimML", definition = function(object, ..., k = 2){
   ## local function to compute AIC and AICc
   AIC1 <- function(x, k = k){

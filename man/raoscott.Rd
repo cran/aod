@@ -49,7 +49,7 @@
   Biometrics 48, 577-585.
   }
 \author{Matthieu Lesnoff \email{matthieu.lesnoff@cirad.fr}, Renaud Lancelot \email{renaud.lancelot@cirad.fr}}
-\seealso{ \code{\link{chisq.test}}, \code{\link{donner}}, \code{\link{icc}}, \code{\link{drs-class}} }
+\seealso{ \code{\link{chisq.test}}, \code{\link{donner}}, \code{\link{iccbin}}, \code{\link{drs-class}} }
 \examples{
   data(rats)
   # deff by group
