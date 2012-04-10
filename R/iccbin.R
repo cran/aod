@@ -18,7 +18,7 @@ iccbin <- function(n, y, data, method = c("A", "B", "C"), nAGQ = 1, M = 1000) {
 ##        require(lme4)
         fm <- lme4::glmer(formula = y ~ 1 + (1 | idbin), family = binomial, data = databin, nAGQ = nAGQ)
         b0 <- lme4::fixef(fm)
-        s2_u <- as.vector(lme4::VarCorr(fm, type = "varcov")[[1]])
+        s2_u <- as.vector(lme4::VarCorr(fm)[[1]])
         if(method == "A") {
             # method A - model linearization
             p <- exp(b0) / (1 + exp(b0))
