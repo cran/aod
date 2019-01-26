@@ -6,3 +6,5 @@ import(
   methods,
   stats
 )
+
+S3method(print, wald.test)
