@@ -63,7 +63,7 @@
   }
 \seealso{\code{\link{glimML-class}}, \code{\link{glm}} and \code{\link{optim}},\cr
          \code{\link[MASS:glm.nb]{glm.nb}} in the recommended package \pkg{MASS},\cr
-         \code{gnlr} in package \pkg{gnlm} available at \url{www.luc.ac.be/~jlindsey/rcode.html}.
+         \code{gnlr} in package \pkg{gnlm} available at \url{https://www.commanster.eu/rcode.html}.
   }
   
 \examples{

@@ -26,10 +26,10 @@ varbin <- function(n, y, data, alpha = 0.05, R = 5000){
   pjack <- mean(pseudovalue)
   varpjack <- var(pseudovalue) / N
   # bootstrap
-  if(!require(boot, quietly = TRUE))
+  if(!requireNamespace("boot", quietly = TRUE))
     stop("This function requires the recommended package dQuote(boot).")
   foo <- function(d, f) p <- sum(d$y * f) / sum(d$n * f)
-  res <- boot(data = datan, statistic = foo, stype = "w", R = R)
+  res <- boot::boot(data = datan, statistic = foo, stype = "w", R = R)
   pboot <- mean(res$t)
   varpboot <- var(res$t)
   # results
