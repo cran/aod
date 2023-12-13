@@ -1,5 +1,5 @@
 Package: aod
-Version: 1.3.2
+Version: 1.3.3
 Date: 2012-04-10
 Title: Analysis of Overdispersed Data
 Author: Matthieu Lesnoff <matthieu.lesnoff@cirad.fr> and Renaud
@@ -17,8 +17,8 @@ Description: Provides a set of functions to analyse
 License: GPL (>= 2)
 URL: https://cran.r-project.org/package=aod
 LazyData: yes
-Encoding: latin1
-Packaged: 2022-04-02 05:58:02 UTC; hornik
+Encoding: UTF-8
+Packaged: 2023-12-11 19:52:10 UTC; hornik
 Repository: CRAN
-Date/Publication: 2022-04-02 06:15:40 UTC
+Date/Publication: 2023-12-13 17:27:45 UTC
 NeedsCompilation: no

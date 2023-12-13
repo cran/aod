@@ -95,7 +95,7 @@ setMethod("summary", signature = "glimML",
       if(any(b3 < 0))
         warning("Negative values for phi.")
 
-## Modif R Lancelot 26/08/2008 suite à remarque de F Bonnot et proposition de M Lesnoff
+## Modif R Lancelot 26/08/2008 suite Ã  remarque de F Bonnot et proposition de M Lesnoff
       Phi <- data.frame(b  = b3,
                         se = se3,
                         z = ifelse(se3 <= 2e-13, 0, b3 / se3),

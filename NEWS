@@ -285,7 +285,7 @@ NEW FEATURES
 		Akaike difference and Akaike weights from a list of models to be compared.
 
     o	A control was added in "betabin" and "negbin" to check the presence of
-		lines with null weight (thanks to Jérémy Bouyer).
+		lines with null weight (thanks to JÃ©rÃ©my Bouyer).
 
     o	The show method for objects of formal class "glimML" was slightly altered:
 		AICc was added to the output and a new presentation was adopted for log-
